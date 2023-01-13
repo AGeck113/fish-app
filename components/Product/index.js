@@ -111,7 +111,7 @@ export default function Product() {
             </p>
           ) : activeCurrency === "EUR" ? (
             <p>
-              Price: {data.price / 1.08} {"EUR"}
+              Price: {data.price / (1.08).toFixed(2)} {"EUR"}
             </p>
           ) : (
             <p>
