@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function Head() {
@@ -5,9 +6,12 @@ export default function Head() {
     "activeCurrency",
     { defaultValue: "EUR" }
   );
+  const router = useRouter();
+  const { id } = router.query;
   function handleActiveCurrency(event) {
     setActiveCurrency(event.target.value);
-    window.location.reload();
+    console.log(router);
+    // router.push(`/${router.query}`);
   }
   return (
     <form>

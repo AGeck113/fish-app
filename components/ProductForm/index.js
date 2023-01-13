@@ -47,7 +47,6 @@ export default function ProductForm() {
         <select id="currency" name="currency">
           <option value="EUR">EUR</option>
           <option value="USD">USD</option>
-          <option value="GBP">GBP</option>
         </select>
       </StyledLabel>
       <StyledButton type="submit">Submit</StyledButton>
