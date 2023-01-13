@@ -10,6 +10,6 @@ const toolSchema = new Schema({
   reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
 });
 
-const Tool = mongoose.models.Tool || mongoose.model("Tools", toolSchema);
+const Tool = mongoose.models.Tool || mongoose.model("Tool", toolSchema);
 
 export default Tool;
