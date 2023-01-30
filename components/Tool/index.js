@@ -1,12 +1,12 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { StyledButton } from "../Button/Button.styled";
-import { ProductCard } from "./Product.styled";
+import { ProductCard } from "./Tool.styled";
 import Comments from "../Comments";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Product() {
+export default function Tool() {
   const [activeCurrency, setActiveCurrency] = useLocalStorageState(
     "activeCurrency",
     { defaultValue: "EUR" }
@@ -16,14 +16,14 @@ export default function Product() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data } = useSWR(id ? `/api/products/${id}` : null);
+  const { data } = useSWR(id ? `/api/tools/${id}` : null);
 
   if (!data) {
     return <h1>Loading...</h1>;
   }
   function handleDelete() {
     try {
-      const response = fetch(`/api/products/${id}`, { method: "DELETE" });
+      const response = fetch(`/api/tools/${id}`, { method: "DELETE" });
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +33,7 @@ export default function Product() {
     const data = Object.fromEntries(formData);
     console.log(data);
     try {
-      const response = fetch(`/api/products/${id}`, {
+      const response = fetch(`/api/tools/${id}`, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: { "Content-type": "application/json" },
@@ -110,9 +110,13 @@ export default function Product() {
               Price: {data.price} {data.currency}
             </p>
           ) : activeCurrency === "EUR" ? (
-            <p>Price: {(data.price / 1.08).toFixed(2)} EUR</p>
+            <p>
+              Price: {data.price / (1.08).toFixed(2)} {"EUR"}
+            </p>
           ) : (
-            <p>Price: {(data.price * 1.08).toFixed(2)} USD</p>
+            <p>
+              Price: {(data.price * 1.08).toFixed(2)} {"USD"}
+            </p>
           )}
         </>
       )}

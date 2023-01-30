@@ -1,7 +1,7 @@
 import ProductList from "../components/ProductList";
 import styled from "styled-components";
 import ProductForm from "../components/ProductForm";
-import ToolList from "../components/Comments/ToolList";
+import ToolList from "../components/ToolList";
 
 const Heading = styled.h1`
   text-align: center;

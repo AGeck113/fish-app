@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { StyledHeading, StyledList } from "./ToolList.styled";
-import { StyledButton } from "../../Button/Button.styled";
+import { StyledButton } from "../Button/Button.styled";
 
 export default function ToolList() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function ToolList() {
           <li key={tool._id}>
             <StyledButton
               type="button"
-              onClick={() => router.push(`/${tool._id}`)}
+              onClick={() => router.push(`/tool/${tool._id}`)}
             >
               {tool.name}
             </StyledButton>
